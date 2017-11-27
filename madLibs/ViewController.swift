@@ -9,17 +9,30 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var outputLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        outputLabel.text = "..."
     }
+    
+    @IBAction func unwindSegue(_ sender: UIStoryboardSegue){
+        let controller = sender.source as! AddItemVCViewController
+        
+        let adj = controller.AdjectiveTextField.text!
+        let verb1 = controller.VerboneTextField.text!
+        let verb2 = controller.VerbtwoTextField.text!
+        let noun = controller.NounTextField.text!
+        let str = "We are having a perfectly \(adj) time now. Later we will \(verb1) and \(verb2) in the \(noun)"
+        print (str)
+        outputLabel.text = str
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
+
+
 
